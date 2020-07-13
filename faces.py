@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
-import pickle
+import json
+#import pickle
 
 face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
 #eye_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_eye.xml')
@@ -10,9 +11,9 @@ face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2
 recognizer = cv2.face.FisherFaceRecognizer_create()
 recognizer.read("./recognizers/face-trainner.yml")
 
-labels = {"person_name": 1}
-with open("pickles/face-labels.pickle", 'rb') as f:
-	og_labels = pickle.load(f)
+#labels = {"person_name": 1}
+with open("ids", 'rt') as f:
+	og_labels = json.load(f)
 	labels = {v:k for k,v in og_labels.items()}
 	# print(labels)
 
